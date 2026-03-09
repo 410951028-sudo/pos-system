@@ -1,3 +1,5 @@
+// ===== 菜單 =====
+
 const menu=[
 
 {name:"雞腿",price:150},
@@ -7,11 +9,19 @@ const menu=[
 
 ];
 
+
+// ===== 資料 =====
+
 let orders=JSON.parse(localStorage.getItem("orders"))||[];
 let completed=JSON.parse(localStorage.getItem("completed"))||[];
 let orderNumber=JSON.parse(localStorage.getItem("orderNumber"))||1;
 
 let tempOrder={};
+
+let chart;
+
+
+// ===== 儲存 =====
 
 function save(){
 
@@ -20,6 +30,9 @@ localStorage.setItem("completed",JSON.stringify(completed));
 localStorage.setItem("orderNumber",orderNumber);
 
 }
+
+
+// ===== 菜單畫面 =====
 
 function renderMenu(){
 
@@ -55,6 +68,9 @@ menuDiv.appendChild(div);
 
 }
 
+
+// ===== 修改數量 =====
+
 function changeQty(i,val){
 
 tempOrder[i]+=val;
@@ -64,6 +80,9 @@ if(tempOrder[i]<0) tempOrder[i]=0;
 document.getElementById("qty"+i).innerText=tempOrder[i];
 
 }
+
+
+// ===== 新增訂單 =====
 
 function createOrder(){
 
@@ -102,6 +121,9 @@ render();
 
 }
 
+
+// ===== 出餐區 =====
+
 function render(){
 
 let orderList=document.getElementById("orderList");
@@ -118,6 +140,7 @@ content+=`${it.name} ${it.qty}份<br>`;
 });
 
 let row=document.createElement("tr");
+row.classList.add("orderCard");
 
 row.innerHTML=`
 
@@ -129,7 +152,7 @@ row.innerHTML=`
 
 <td>
 
-<button class="doneBtn" onclick="finishOrder(${i})">✔</button>
+<button class="doneBtn" onclick="finishOrder(${i},this)">✔</button>
 
 <button class="deleteBtn" onclick="deleteOrder(${i})">✖</button>
 
@@ -146,7 +169,16 @@ renderStats();
 
 }
 
-function finishOrder(i){
+
+// ===== 完成訂單 =====
+
+function finishOrder(i,btn){
+
+let row=btn.closest("tr");
+
+row.classList.add("removing");
+
+setTimeout(()=>{
 
 completed.push(orders[i]);
 orders.splice(i,1);
@@ -154,7 +186,12 @@ orders.splice(i,1);
 save();
 render();
 
+},300);
+
 }
+
+
+// ===== 刪除訂單 =====
 
 function deleteOrder(i){
 
@@ -164,6 +201,9 @@ save();
 render();
 
 }
+
+
+// ===== 已完成訂單 =====
 
 function renderCompleted(){
 
@@ -186,7 +226,8 @@ div.innerHTML+=`<div>${text}</div><hr>`;
 
 }
 
-let chart;
+
+// ===== 統計 =====
 
 function renderStats(){
 
@@ -223,6 +264,9 @@ renderChart(items);
 
 }
 
+
+// ===== 圖表 =====
+
 function renderChart(items){
 
 let labels=Object.keys(items);
@@ -235,58 +279,30 @@ chart.destroy();
 }
 
 chart=new Chart(ctx,{
-  type:"bar",
-  data:{
-    labels:labels,
-    datasets:[{
-      label:'今日銷量',
-      data:data
-    }]
-  },
-  options:{
-    responsive:true,
-    maintainAspectRatio:false,
-
-    animation:{
-      duration:1000
-    },
-
-    plugins:{
-      legend:{display:false}
-    }
-  }
+type:"bar",
+data:{
+labels:labels,
+datasets:[{
+label:"今日銷量",
+data:data
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false,
+animation:{
+duration:1000
+},
+plugins:{
+legend:{display:false}
+}
+}
 });
-
-let stats=document.getElementById("stats");
-
-let items={};
-let total=0;
-
-completed.forEach(o=>{
-
-total+=o.total;
-
-o.items.forEach(it=>{
-
-items[it.name]=(items[it.name]||0)+it.qty;
-
-});
-
-});
-
-let html="";
-
-for(let k in items){
-
-html+=`${k} ${items[k]}<br>`;
 
 }
 
-html+=`<br>應收 ${total} 元`;
 
-stats.innerHTML=html;
-
-
+// ===== Modal =====
 
 function openModal(){
 
@@ -301,6 +317,9 @@ document.getElementById("orderModal").style.display="none";
 
 }
 
+
+// ===== 日結 =====
+
 function clearDay(){
 
 if(confirm("確定日結清空？")){
@@ -311,6 +330,9 @@ location.reload();
 }
 
 }
+
+
+// ===== 自動換日 =====
 
 function checkDay(){
 
@@ -326,6 +348,8 @@ localStorage.setItem("day",today);
 
 }
 
-checkDay();
 
+// ===== 初始化 =====
+
+checkDay();
 render();
