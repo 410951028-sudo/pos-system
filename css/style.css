@@ -275,13 +275,56 @@ transform:scale(0.95);
 
 /* 訂單卡片 */
 
+/* ===== 全域 ===== */
+
+body{
+  font-family:sans-serif;
+  background:#f5f5f5;
+  margin:0;
+}
+
+
+/* ===== 訂單卡片 ===== */
+
 .orderCard{
-background:white;
-padding:14px;
-margin:10px 0;
-border-radius:10px;
-box-shadow:0 2px 6px rgba(0,0,0,0.1);
-font-size:20px;
+  background:white;
+  padding:14px;
+  margin:10px 0;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
+  font-size:20px;
+
+  /* 讓動畫順暢 */
+  transition:all 0.3s ease;
+}
+
+
+/* ===== 新訂單動畫 ===== */
+
+.newOrder{
+  animation: slideIn 0.35s ease;
+}
+
+@keyframes slideIn{
+
+  from{
+    transform:translateY(30px);
+    opacity:0;
+  }
+
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+
+}
+
+
+/* ===== 完成訂單動畫 ===== */
+
+.removing{
+  opacity:0;
+  transform:translateY(-30px);
 }
 
 /* 已完成訂單區 */
