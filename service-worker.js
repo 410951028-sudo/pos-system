@@ -2,10 +2,10 @@ self.addEventListener('install', e => {
   e.waitUntil(
     caches.open('pos-cache').then(cache => {
       return cache.addAll([
-        '/',
-        '/index.html',
-        '/app.js',
-        '/css/style.css'
+        './',
+        './index.html',
+        './app.js',
+        './css/style.css'
       ]);
     })
   );
