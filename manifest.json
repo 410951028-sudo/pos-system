@@ -1,6 +1,6 @@
 {
   "name": "POS 收銀系統",
-  "short_name": "POS",
+  "short_name": "RJ Pay",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
@@ -18,3 +18,4 @@
     }
   ]
 }
+
