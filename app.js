@@ -235,23 +235,27 @@ chart.destroy();
 }
 
 chart=new Chart(ctx,{
-type:'bar',
-data:{
-labels:labels,
-datasets:[{
-label:'今日銷量',
-data:data
-}]
-},
-options:{
-responsive:true,
-plugins:{
-legend:{display:false}
-}
-}
-});
+  type:"bar",
+  data:{
+    labels:labels,
+    datasets:[{
+      label:'今日銷量',
+      data:data
+    }]
+  },
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
 
-}
+    animation:{
+      duration:1000
+    },
+
+    plugins:{
+      legend:{display:false}
+    }
+  }
+});
 
 let stats=document.getElementById("stats");
 
@@ -323,4 +327,5 @@ localStorage.setItem("day",today);
 }
 
 checkDay();
+
 render();
