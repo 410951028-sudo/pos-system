@@ -384,25 +384,36 @@ render();
 
 function showVersion(){
 
-let html=`
+versionClick++;
 
+let html = `
 ${APP_INFO.name}<br><br>
-
 版本：v${APP_INFO.version}<br>
-
 更新：${APP_INFO.update}<br>
-
 開發：${APP_INFO.developer}
-
 `;
 
-document.getElementById("versionInfo").innerHTML=html;
+if(versionClick >= 5){
+
+html += `
+<br><br>
+<hr>
+🎉 Special Thanks 🎉<br>
+猛男 X RJ X 硬漢<br>
+陪伴店裡走了好段時間的男人<br>
+`;
+}
+
+document.getElementById("versionInfo").innerHTML = html;
 
 document.getElementById("versionModal").style.display="flex";
 
 }
 
 function closeVersion(){
+function closeVersion(){
+
+versionClick = 0;
 
 document.getElementById("versionModal").style.display="none";
 
@@ -442,6 +453,7 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
 
 
