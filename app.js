@@ -6,6 +6,8 @@ const menu=[
 {name:"牛肋條",price:150},
 {name:"牛丼飯",price:150},
 {name:"墨魚香腸",price:150}
+{name:"喝不了三杯",price:150}
+{name:"欸洪淦攏來",price:150}
 
 ];
 
@@ -353,3 +355,4 @@ localStorage.setItem("day",today);
 
 checkDay();
 render();
+
