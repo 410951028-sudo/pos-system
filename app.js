@@ -429,7 +429,7 @@ csv += `${o.id},${o.time||""},${it.name},${it.qty},${it.price},${subtotal}\n`;
 
 });
 
-let blob=new Blob([csv],{type:"text/csv"});
+let blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
 
 let a=document.createElement("a");
 
@@ -441,4 +441,5 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
