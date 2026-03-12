@@ -8,8 +8,11 @@
 
 <title>😎擺攤老大😎</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <meta name="theme-color" content="#1976d2">
 </head>
 
@@ -100,12 +103,28 @@
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
+
+<div id="versionModal" class="modal">
+
+<div class="modalContent">
+
+<div id="versionInfo"></div>
+
+<br>
+
+<button onclick="closeVersion()">關閉</button>
+
+</div>
+
+</div>
+
 </script>
 
 </body>
 
 
 </html>
+
 
 
 
