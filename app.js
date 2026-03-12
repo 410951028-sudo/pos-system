@@ -415,7 +415,6 @@ document.getElementById("versionModal").style.display="flex";
 
 function closeVersion(){
 
-versionClick = 0;
 
 document.getElementById("versionModal").style.display="none";
 
@@ -455,6 +454,7 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
 
 
