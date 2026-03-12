@@ -395,7 +395,7 @@ ${APP_INFO.name}<br><br>
 開發：${APP_INFO.developer}
 `;
 
-if(versionClick >= 5){
+if(versionClick >= 3){
 
 html += `
 <br><br>
@@ -404,6 +404,7 @@ html += `
 猛男 X RJ X 硬漢<br>
 陪伴店裡走了好段時間的男人<br>
 `;
+versionClick = 0;
 }
 
 document.getElementById("versionInfo").innerHTML = html;
@@ -454,6 +455,7 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
 
 
