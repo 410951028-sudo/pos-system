@@ -1,4 +1,13 @@
-// ===== 菜單 =====
+// ===== 系統資訊 =====
+
+const APP_INFO = {
+
+name:"擺攤老大 POS",
+version:"1.0",
+update:"2026-03-12",
+developer:"AL"
+
+};// ===== 菜單 =====
 
 const menu=[
 
@@ -364,3 +373,32 @@ localStorage.setItem("day",today);
 
 checkDay();
 render();
+
+// ===== 版本資訊 =====
+
+function showVersion(){
+
+let html=`
+
+${APP_INFO.name}<br><br>
+
+版本：v${APP_INFO.version}<br>
+
+更新：${APP_INFO.update}<br>
+
+開發：${APP_INFO.developer}
+
+`;
+
+document.getElementById("versionInfo").innerHTML=html;
+
+document.getElementById("versionModal").style.display="flex";
+
+}
+
+function closeVersion(){
+
+document.getElementById("versionModal").style.display="none";
+
+}
+
