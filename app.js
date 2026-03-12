@@ -15,9 +15,10 @@ const menu=[
 {name:"牛肋條",price:150},
 {name:"牛丼飯",price:150},
 {name:"墨魚香腸",price:150},
-{name:"喝不了三杯",price:150},
-{name:"欸洪淦攏來",price:150},
-{name:"百威搭擠杯",price:150}
+{name:"百威搭擠杯",price:150},
+{name:"喝不了三杯",price:250},
+{name:"欸洪淦攏來",price:300}
+
 
 ];
 
@@ -454,6 +455,7 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
 
 
