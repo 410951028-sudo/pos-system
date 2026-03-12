@@ -99,17 +99,20 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="app.js"></script>
+
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
+</script>
 
-<script>
+<!-- 版本資訊 Modal -->
 <div id="versionModal" class="modal">
 
 <div class="modalContent">
 
 <h2>版本資訊</h2>
+
 <div id="versionInfo"></div>
 
 <br>
@@ -120,13 +123,5 @@ if ('serviceWorker' in navigator) {
 
 </div>
 
-
 </body>
-
-
 </html>
-
-
-
-
-
