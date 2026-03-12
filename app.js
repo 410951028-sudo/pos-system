@@ -5,8 +5,8 @@ const menu=[
 {name:"雞腿",price:150},
 {name:"牛肋條",price:150},
 {name:"牛丼飯",price:150},
-{name:"墨魚香腸",price:150}
-{name:"喝不了三杯",price:150}
+{name:"墨魚香腸",price:150},
+{name:"喝不了三杯",price:150},
 {name:"欸洪淦攏來",price:150}
 
 ];
@@ -43,7 +43,10 @@ menuDiv.innerHTML="";
 
 menu.forEach((item,i)=>{
 
+// 修正：避免每次開modal重置
+if(tempOrder[i]===undefined){
 tempOrder[i]=0;
+}
 
 let div=document.createElement("div");
 div.className="menuItem";
@@ -56,7 +59,7 @@ ${item.name}
 
 <button onclick="changeQty(${i},-1)">-</button>
 
-<span id="qty${i}">0</span>
+<span id="qty${i}">${tempOrder[i]}</span>
 
 <button onclick="changeQty(${i},1)">+</button>
 
@@ -116,6 +119,9 @@ items:items,
 total:total
 
 });
+
+// 新訂單建立後清空暫存
+tempOrder={};
 
 save();
 closeModal();
@@ -210,7 +216,8 @@ render();
 function renderCompleted(){
 
 let div=document.getElementById("completedList");
-div.innerHTML="";
+
+let html="";
 
 completed.forEach(o=>{
 
@@ -222,9 +229,11 @@ text+=`${it.name} ${it.qty}份<br>`;
 
 });
 
-div.innerHTML+=`<div>${text}</div><hr>`;
+html+=`<div>${text}</div><hr>`;
 
 });
+
+div.innerHTML=html;
 
 }
 
@@ -355,4 +364,3 @@ localStorage.setItem("day",today);
 
 checkDay();
 render();
-
