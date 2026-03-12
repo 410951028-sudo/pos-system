@@ -197,7 +197,12 @@ row.classList.add("removing");
 
 setTimeout(()=>{
 
-completed.push(orders[i]);
+let finishedOrder = orders[i];
+
+// 不影響UI，只在資料內加入時間
+finishedOrder.time = new Date().toLocaleTimeString("zh-TW",{hour:'2-digit',minute:'2-digit'});
+
+completed.push(finishedOrder);
 orders.splice(i,1);
 
 save();
@@ -399,6 +404,41 @@ document.getElementById("versionModal").style.display="flex";
 function closeVersion(){
 
 document.getElementById("versionModal").style.display="none";
+
+}
+// ===== 匯出 CSV =====
+
+function exportCSV(){
+
+if(completed.length===0){
+alert("沒有營收資料");
+return;
+}
+
+let csv="訂單編號,時間,品項,數量,單價,小計\n";
+
+completed.forEach(o=>{
+
+o.items.forEach(it=>{
+
+let subtotal = it.qty * it.price;
+
+csv += `${o.id},${o.time||""},${it.name},${it.qty},${it.price},${subtotal}\n`;
+
+});
+
+});
+
+let blob=new Blob([csv],{type:"text/csv"});
+
+let a=document.createElement("a");
+
+let today=new Date().toLocaleDateString("sv-SE");
+
+a.href=URL.createObjectURL(blob);
+a.download="sales_"+today+".csv";
+
+a.click();
 
 }
 
