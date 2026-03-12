@@ -32,6 +32,8 @@ let tempOrder={};
 
 let chart;
 
+let versionClick = 0;
+
 
 // ===== 儲存 =====
 
@@ -452,6 +454,7 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
 
 
