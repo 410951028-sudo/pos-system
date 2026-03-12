@@ -411,7 +411,6 @@ document.getElementById("versionModal").style.display="flex";
 }
 
 function closeVersion(){
-function closeVersion(){
 
 versionClick = 0;
 
@@ -453,6 +452,7 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+
 
 
 
