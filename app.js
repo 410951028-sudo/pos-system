@@ -1,3 +1,19 @@
+// ===== 裝置偵測 =====
+
+function detectDevice(){
+
+const ua = navigator.userAgent.toLowerCase();
+
+const isMobile =
+/android|iphone|ipod|blackberry|windows phone/.test(ua);
+
+if(isMobile){
+document.body.classList.add("mobile-ui");
+}
+
+}
+
+detectDevice();
 // ===== 系統資訊 =====
 
 const APP_INFO = {
@@ -455,7 +471,21 @@ a.download="sales_"+today+".csv";
 a.click();
 
 }
+// ===== POS 更新提示 =====
 
+let refreshing;
+
+navigator.serviceWorker?.addEventListener("controllerchange",function(){
+
+if(refreshing) return;
+
+refreshing=true;
+
+alert("POS 已更新，將重新載入");
+
+location.reload();
+
+});
 
 
 
