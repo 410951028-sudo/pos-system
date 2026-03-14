@@ -19,8 +19,8 @@ detectDevice();
 const APP_INFO = {
 
 name:"擺攤老大 POS",
-version:"1.0",
-update:"2026-03-12",
+version:"1.1",
+update:"2026-03-114",
 developer:"AL"
 
 };// ===== 菜單 =====
