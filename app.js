@@ -13,7 +13,7 @@ document.body.classList.add("mobile-ui");
 
 }
 
-detectDevice();
+
 // ===== 系統資訊 =====
 
 const APP_INFO = {
@@ -396,8 +396,25 @@ localStorage.setItem("day",today);
 
 // ===== 初始化 =====
 
+function init(){
+
+// 裝置偵測
+detectDevice();
+
+// 檢查是否跨日
 checkDay();
+
+// 畫出畫面
 render();
+
+}
+
+// 等 DOM 完成再啟動（避免 iOS / Safari null bug）
+if(document.readyState === "loading"){
+document.addEventListener("DOMContentLoaded", init);
+}else{
+init();
+}
 
 // ===== 版本資訊 =====
 
