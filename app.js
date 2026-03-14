@@ -20,7 +20,7 @@ const APP_INFO = {
 
 name:"擺攤老大 POS",
 version:"1.1",
-update:"2026-03-114",
+update:"2026-03-14",
 developer:"AL"
 
 };// ===== 菜單 =====
@@ -486,11 +486,4 @@ alert("POS 已更新，將重新載入");
 location.reload();
 
 });
-
-
-
-
-
-
-
 
